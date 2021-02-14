@@ -4,4 +4,4 @@ RUN addgroup -g 1000 laravel && adduser -G laravel -g laravel -s /bin/sh -D lara
 
 WORKDIR /var/www/html
 
-CMD create-project laravel/laravel .
+CMD composer create-project laravel/laravel .

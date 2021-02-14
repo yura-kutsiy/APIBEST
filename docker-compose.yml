@@ -9,6 +9,7 @@ services:
     container_name: nginx
     ports:
       - 8080:80
+      - 9001:9001
     volumes:
       - ./src:/var/www/html:delegated
     depends_on:
@@ -39,6 +40,7 @@ services:
     container_name: php
     volumes:
       - ./src:/var/www/html:delegated
+      - ./php/docker-xdebug.ini:/usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini
     networks:
       - laravel
 
@@ -47,10 +49,10 @@ services:
     container_name: composer
     volumes:
       - ./src:/var/www/html
-    working_dir: /var/www/html
+    #working_dir: /var/www/html
     depends_on:
       - php
     user: laravel
-    entrypoint: ['composer', '--ignore-platform-reqs']
+    #entrypoint: ['composer', '--ignore-platform-reqs']
     networks:
       - laravel
